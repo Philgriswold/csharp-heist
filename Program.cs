@@ -1,43 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//this code is currently broken
-
-namespace Heist
+namespace HeistExercise
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Plan your heist!");
+            Console.WriteLine("Plan Your Heist");
+            Console.WriteLine();
+            Heister teamMember;
 
-            List<Member> teamMember = new List<Member>();
+            Console.WriteLine("What is the team member's name?");
+            string name = Console.ReadLine();
 
-            Member member1 = new Member("Bill", 9, 1.4m);
+            Console.WriteLine("What is the team member's skill level?");
+            string skillLevelString = Console.ReadLine();
+            int skillLevel;
 
-            List<string> Questions = new List<string>();
-
-
-            Console.WriteLine("Enter a new team member's name");
-            string newName1 = Console.ReadLine();
-            teamMember.Add("Name" + newName1);
-
-            Console.WriteLine("Enter a new team member's skill level");
-            string newSkillLevel1 = Console.ReadLine();
-            teamMember.Add("Skill level" + newSkillLevel1);
-
-            Console.WriteLine("Enter a new team member's courage factor");
-            string newCourageFactor1 = Console.ReadLine();
-            teamMember.Add("Courage factor" + newCourageFactor1);
-
-            foreach (KeyValuePair<string, string> in teamMember)
+            try
             {
-                Console.WriteLine("");
+                skillLevel = int.Parse(skillLevelString);
             }
-        };
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{skillLevelString} is not a valid skill level. Using a default value of 10");
+                skillLevel = 10;
+            }
+
+            Console.WriteLine("What is the team member's courage factor?");
+            string courageFactorString = Console.ReadLine();
+            decimal courageFactor;
+
+            try
+            {
+                courageFactor = decimal.Parse(courageFactorString);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine($"{courageFactorString} is not a valid courage factor. Using a default value of 1.0");
+                courageFactor = 1.0M;
+            }
+
+            teamMember = new Heister()
+            {
+                Name = name,
+                SkillLevel = skillLevel,
+                CourageFactor = courageFactor
+            };
+
+            Console.WriteLine($"Name: {teamMember.Name}");
+            Console.WriteLine($"Skill Level: {teamMember.SkillLevel}");
+            Console.WriteLine($"Courage Factor: {teamMember.CourageFactor}");
+        }
     }
 }
-
-
-// Console.WriteLine("Please enter a new team members name?"),
-// Console.WriteLine("Please enter a new team member's skill level")
