@@ -77,11 +77,15 @@ namespace HeistExercise
                     string courage = Console.ReadLine();
                 }
 
+                // int bankDifficulty = 100;
+                List<int> skillNum = new List<int>();
+
+                heistGroup.ForEach(heister =>
+                 {
+                     skillNum.Add(heister.SkillLevel);
+                 });
+                int skillSum = skillNum.Sum();
             }
-
         }
-
-
-
     }
 }
