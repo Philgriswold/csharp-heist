@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HeistExercise
 {
@@ -77,7 +78,7 @@ namespace HeistExercise
                     string courage = Console.ReadLine();
                 }
 
-                // int bankDifficulty = 100;
+
                 List<int> skillNum = new List<int>();
 
                 heistGroup.ForEach(heister =>
@@ -85,6 +86,22 @@ namespace HeistExercise
                      skillNum.Add(heister.SkillLevel);
                  });
                 int skillSum = skillNum.Sum();
+                int bankDifficulty = 100;
+
+                if (skillSum < bankDifficulty)
+                {
+                    Console.WriteLine("I wouldn't do this");
+                }
+                else
+                {
+                    Console.WriteLine("I think you can pull this off");
+                }
+                //phase 4 started
+                Random random = new Random();
+                int luckValue = random.Next(-10, 10);
+                bankDifficulty += luckValue;
+                Console.WriteLine($"Your teams skill level is {skillSum}");
+                Console.WriteLine($"The bank's difficulty level is {bankDifficulty}");
             }
         }
     }
