@@ -11,6 +11,9 @@ namespace HeistExercise
             Console.WriteLine();
             Heister teamMember;
 
+            // Create a way to store several team members.
+            List<Heister> heistGroup = new List<Heister>();
+
             Console.WriteLine("What is the team member's name?");
             string name = Console.ReadLine();
 
@@ -22,7 +25,7 @@ namespace HeistExercise
             {
                 skillLevel = int.Parse(skillLevelString);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine($"{skillLevelString} is not a valid skill level. Using a default value of 10");
                 skillLevel = 10;
@@ -49,10 +52,36 @@ namespace HeistExercise
                 SkillLevel = skillLevel,
                 CourageFactor = courageFactor
             };
-
             Console.WriteLine($"Name: {teamMember.Name}");
             Console.WriteLine($"Skill Level: {teamMember.SkillLevel}");
             Console.WriteLine($"Courage Factor: {teamMember.CourageFactor}");
+            heistGroup.Add(teamMember);
+
+
+
+            while (true)
+            {
+                Console.WriteLine("Enter a new team member's name!");
+                string memberName = Console.ReadLine();
+
+                if (name == "")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("What is your skill level");
+                    string skill = Console.ReadLine();
+
+                    Console.WriteLine("What is your courage factor");
+                    string courage = Console.ReadLine();
+                }
+
+            }
+
         }
+
+
+
     }
 }
